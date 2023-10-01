@@ -21,15 +21,8 @@ public partial class ControlSceneManager : MonoBehaviour
 
         mCanvasGroup = GetComponent<CanvasGroup>();
         mProgress = GetComponentInChildren<Slider>();
-    }
 
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.L))
-        {
-            Debug.Log("Load");
-            LoadSceneWithoutConfirm("MainScene");
-        }
+        LoadSceneWithoutConfirm("StartScene");
     }
 }
 
@@ -49,6 +42,13 @@ public partial class ControlSceneManager
 
         CanTransition = true;
         Instance.StartCoroutine(Instance.LoadSceneCoroutine(targetScene, action));
+    }
+
+    public static void UnloadScene(string[] targetScene)
+    {
+        if (CurrentScene == "ControlScene") return;
+
+        Instance.StartCoroutine(Instance.UnloadSceneCoroutine(targetScene));
     }
 
     public static void SwitchScene(string targetScene, Action action = null)
@@ -91,13 +91,32 @@ public partial class ControlSceneManager
         operation.allowSceneActivation = true;
         CurrentScene = targetScene;
 
-        action?.Invoke();
-
         yield return new WaitForSeconds(1f);
         yield return new WaitUntil(() => {return CanTransition;});
         CanTransition = false;
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(targetScene));
+
+        action?.Invoke();
 
         yield return Fade(0);
+        mProgress.value = 0;
+    }
+
+    IEnumerator UnloadSceneCoroutine(string[] targetScene)
+    {
+        yield return Fade(1);
+        yield return new WaitForSeconds(1f);
+
+        foreach (var scene in targetScene)
+        {
+            SceneManager.UnloadSceneAsync(scene);
+        }
+        
+        CurrentScene = SceneManager.GetActiveScene().name;
+
+        yield return new WaitForSeconds(1f);
+        yield return Fade(0);
+        mProgress.value = 0;
     }
 
     IEnumerator SwitchSceneCoroutine(string targetScene, Action action = null)
@@ -126,25 +145,20 @@ public partial class ControlSceneManager
         operation.allowSceneActivation = true;
         CurrentScene = targetScene;
 
-        action?.Invoke();
-
         yield return new WaitForSeconds(1f);
         yield return new WaitUntil(() => {return CanTransition;});
         CanTransition = false;
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(targetScene));
+
+        action?.Invoke();
 
         yield return Fade(0);
+        mProgress.value = 0;
     }
 
     IEnumerator Fade(float targetAlpha)
     {
-        if (targetAlpha == 1)
-        {
-            mCanvasGroup.blocksRaycasts = true;
-        }
-        else
-        {
-            mCanvasGroup.blocksRaycasts = false;
-        }
+        mCanvasGroup.blocksRaycasts = targetAlpha == 1;
 
         while (!Mathf.Approximately(mCanvasGroup.alpha, targetAlpha))
         {

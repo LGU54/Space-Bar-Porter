@@ -38,7 +38,7 @@ public class UserPreference
         PlayerPrefs.SetFloat(key, value);
     }
 
-    public static T Read<T>(string key) where T : struct
+    public static T Read<T>(string key) where T : notnull
     {
         if (!Contains(key))
             return (T) Convert.ChangeType(null, typeof(T));
