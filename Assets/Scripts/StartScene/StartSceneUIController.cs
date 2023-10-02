@@ -23,7 +23,7 @@ public partial class StartSceneUIController : MonoBehaviour
 
         mStart.onClick.AddListener(() => {
             ControlSceneManager.SwitchSceneWithoutConfirm("MainScene", () => {
-                DialogFSM.GetInstance().Context = new PlotReader(0);
+                DialogFSM.GetInstance().Context = new PlotReader(5);
                 DialogFSM.GetInstance().Context.ReadBeforeLines();
                 DialogFSM.NextLine();
             });

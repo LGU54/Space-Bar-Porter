@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Kuchinashi;
 
-public enum AreaType
+namespace Kuchinashi
 {
-    JumpArea,
-    GravityReverseArea,
-    DashArea,
+    public enum AreaType
+    {
+        JumpArea,
+        GravityReverseArea,
+        DashArea,
+    }
 }
 
 public partial class InGameUIController : MonoBehaviour

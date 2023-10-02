@@ -13,6 +13,10 @@ public partial class DialogFSM : MonoBehaviour
     public DialogState LastStateType;
 
     public Dictionary<DialogState, IState> States;
+    public Sprite[] TachieSprites;
+    private readonly static Dictionary<string, int> mTachieSprites = new Dictionary<string, int>() {
+        {"P", 0}, {"S", 1}, {"J", 2}, {"G", 3}, {"D", 4}
+    };
 
     public PlotReader Context;
 
@@ -67,6 +71,12 @@ public partial class DialogFSM : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A) && Context.CurrentLines.Count == 0)
         {
             Context.ReadGameLines();
+            NextLine();
+        }
+
+        if (Input.GetKeyDown(KeyCode.B) && Context.CurrentLines.Count == 0)
+        {
+            Context.ReadAfterLines();
             NextLine();
         }
     }
@@ -125,9 +135,15 @@ public partial class DialogFSM
         {
             case LineType.CharacterA:
                 mSelf.NameLabelA.text = Localization.Get(id);
+                mSelf.TachieA.sprite = mSelf.TachieSprites[mTachieSprites[id]];
                 break;
             case LineType.CharacterB:
                 mSelf.NameLabelB.text = Localization.Get(id);
+                mSelf.TachieB.sprite = mSelf.TachieSprites[mTachieSprites[id]];
+                break;
+            case LineType.Narration:
+                mSelf.TachieA.sprite = null;
+                mSelf.TachieB.sprite = null;
                 break;
             default:
                 break;
@@ -157,7 +173,7 @@ public partial class DialogFSM
         switch (target)
         {
             case "A":
-                TachieA.CrossFadeAlpha(targetAlpha == 1f ? 1f : 0.2f, 0.3f, true);
+                TachieA.CrossFadeAlpha(targetAlpha == 1f ? 1f : 0f, 0.3f, true);
                 while (!Mathf.Approximately(NameBoxA.alpha, targetAlpha))
                 {
                     NameBoxA.alpha = Mathf.MoveTowards(NameBoxA.alpha, targetAlpha, 0.3f);
@@ -166,7 +182,7 @@ public partial class DialogFSM
                 NameBoxA.alpha = targetAlpha;
                 break;
             case "B":
-                TachieB.CrossFadeAlpha(targetAlpha == 1f ? 1f : 0.2f, 0.3f, true);
+                TachieB.CrossFadeAlpha(targetAlpha == 1f ? 1f : 0f, 0.3f, true);
                 while (!Mathf.Approximately(NameBoxB.alpha, targetAlpha))
                 {
                     NameBoxB.alpha = Mathf.MoveTowards(NameBoxB.alpha, targetAlpha, 0.3f);
