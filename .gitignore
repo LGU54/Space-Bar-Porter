@@ -98,9 +98,3 @@ crashlytics-build.properties
 
 # AssetBundles
 /[Aa]ssetBundles/
-/[Aa]ssets/[Ss]treamingAssets
-/[Aa]ssets/[Ss]treamingAssets.meta
-
-# Standard Assets
-/[Aa]ssets/[Ss]tandardAssets
-/[Aa]ssets/[Ss]tandardAssets.meta

@@ -544,8 +544,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Shoujo Praying \u2026\u2026"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 32f6a4dc33a448e4f830dae3d7c4442d, type: 2}
-  m_sharedMaterial: {fileID: 7823644903131553515, guid: 32f6a4dc33a448e4f830dae3d7c4442d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ec001a9dbdb56594e99c623d7df92368, type: 2}
+  m_sharedMaterial: {fileID: 7550082078799229853, guid: ec001a9dbdb56594e99c623d7df92368, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

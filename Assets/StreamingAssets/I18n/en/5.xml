@@ -1,0 +1,26 @@
+<Localization lang="en">
+  <BeforeGame>
+  <Narration>2 weeks later......</Narration>
+  </BeforeGame>
+  <InGame>
+    <CharacterA id="P">Why are you gathering here?<![CDATA[Σ(*д*)]]></CharacterA>
+    <CharacterB id="J">Ahh, our hero is back!</CharacterB>
+    <CharacterB id="G">We've just reached a <![CDATA[<i><b>conclusion</b></i>]]>, young lady.</CharacterB>
+	<CharacterB id="D">Guess what? We decided to combine our powers and to combine the three spaces as <![CDATA[<b>a whole</b>]]>!</CharacterB>
+	<CharacterA id="P"><![CDATA[<size=60>(☉д⊙)</size>]]></CharacterA>
+	<CharacterB id="J">Kid, after the distortion event we figured out that the reason for the <![CDATA[<color=purple>Limit Core</color>]]> to go berserk &#10;is that the three spaces have been parted for too long, resulting in a huge amount of loss of Moving Power.</CharacterB>
+    <CharacterA id="P">You mean......<![CDATA[*Å*)]]></CharacterA>
+	<CharacterB id="G">Yes, the three spaces were originally <![CDATA[<b>together</b>]]>.</CharacterB>
+	<CharacterB id="D">But due to some slight……friction between people, we divided the <![CDATA[<color=purple><i>Moving-Verse</i></color>]]> into 3 spaces.</CharacterB>
+	<CharacterB id="J">It was you that made us realize that our bias is unreasonable, &#10;the <![CDATA[<color=purple>Moving-Verse can't be without jumping, gravity changing, and dashing.]]></CharacterB>
+	<CharacterB id="J">That's why we are here declaring the foundation of the <![CDATA[<color=purple><b>USMV</b>, United Spaces of Moving-Verse.</color>]]></CharacterB>
+  </InGame>
+  <AfterGame>
+	<Narration>The division of the three spaces ended and the limit of <![CDATA[<b>SPACE BAR</b> lifted. There's no more limited space for limited <b>SPACE BARS</b>]]>. &#10;All areas are white again. Residents in this Side-scrolling video game can move freely again, as they should do.</Narration>
+	<CharacterA id="P">Great, so no more space traveling. I am going back for some anime now. <![CDATA[( ( •̀ ω •́ )✧ )]]></CharacterA>
+	<CharacterA id="P"><![CDATA[([]~(￣▽￣)~*]]></CharacterA>
+	<CharacterA id="P"><![CDATA[￣へ￣]]></CharacterA>
+	<CharacterA id="P"><![CDATA[Why are you still watching me?(* ￣︿￣)]]></CharacterA>
+	<CharacterA id="P"><![CDATA[Thanks for playing >"<]]></CharacterA>
+  </AfterGame>
+</Localization>

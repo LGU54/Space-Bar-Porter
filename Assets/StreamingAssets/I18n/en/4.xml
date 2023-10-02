@@ -1,0 +1,14 @@
+<Localization lang="en">
+  <BeforeGame>
+  <CharacterA id="S"><![CDATA[Bro, I'm here to warn you that we've detected <b>an abnormal strong distortion</b> in the space ahead.]]></CharacterA>
+  <CharacterA id="S">Keep it up, girl. The <![CDATA[<color=purple>Sanctuary</color>]]> is within reach.</CharacterA>
+  </BeforeGame>
+  <InGame>
+    <CharacterA id="D"><![CDATA[<color=orange>Come on girl, I reckon that you are a much cleverer entity.</color>]]></CharacterA>
+    <CharacterB id="G"><![CDATA[<color=blue>Be brave and crash the barriers!</color>]]></CharacterB>
+    <CharacterA id="J"><![CDATA[<color=red>You are the one, I believe in you.</color>]]></CharacterA>
+  </InGame>
+  <AfterGame>
+	<CharacterB id="S">Get to the <![CDATA[<b><color=purple>Limit Core</color></b>, Bro!]]></CharacterB>
+  </AfterGame>
+</Localization>

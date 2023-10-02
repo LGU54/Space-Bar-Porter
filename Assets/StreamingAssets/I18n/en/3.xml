@@ -1,0 +1,13 @@
+<Localization lang="en">
+  <BeforeGame>
+  </BeforeGame>
+  <InGame>
+    <CharacterA id="P">Mr. Chancellor! By order of my president, I need to borrow the <![CDATA[<i><color=orange>Dash Heart</color></i>!σ`∀´)σ]]></CharacterA>
+    <CharacterB id="D">Always this hurry, huh? Is that all what you guys can do? &#10;In <![CDATA[<color=orange>Dash Space</color>]]>, we dash forward on the assurance that we have wisdom. &#10;Childish, back off！</CharacterB>
+    <CharacterA id="P"> <![CDATA[(I must think before I dash to catch up <color=orange>the chancellor.</color>)]]></CharacterA>
+  </InGame>
+  <AfterGame>
+	<CharacterB id="D">Think twice before you leap, good choice! I can tell that there're indeed some interesting people outside my space.</CharacterB>
+	<Narration><![CDATA[<i><color=orange>Dash Heart</color></i> get!]]></Narration>
+  </AfterGame>
+</Localization>
