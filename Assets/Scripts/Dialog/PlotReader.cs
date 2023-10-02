@@ -26,6 +26,7 @@ public class PlotReader
     public List<Line> AfterGameLines;
 
     public List<Line> CurrentLines;
+    public string CurrentPlot;
 
     public PlotReader(int chapter)
     {
@@ -108,15 +109,18 @@ public class PlotReader
     public void ReadBeforeLines()
     {
         CurrentLines.AddRange(BeforeGameLines);
+        CurrentPlot = "BeforeGame";
     }
 
     public void ReadGameLines()
     {
         CurrentLines.AddRange(InGameLines);
+        CurrentPlot = "InGame";
     }
 
     public void ReadAfterLines()
     {
         CurrentLines.AddRange(AfterGameLines);
+        CurrentPlot = "AfterGame";
     }
 }

@@ -21,6 +21,7 @@ public partial class DialogFSM : MonoBehaviour
     public PlotReader Context;
 
     private CanvasGroup mCanvasGroup;
+    private CanvasGroup mBackground;
     public Button Button;
 
     public Image TachieA;
@@ -44,6 +45,8 @@ public partial class DialogFSM : MonoBehaviour
 
         mCanvasGroup = this.GetComponent<CanvasGroup>();
         Button = this.GetComponent<Button>();
+
+        mBackground = transform.Find("Background").GetComponent<CanvasGroup>();
 
         TachieA = transform.Find("TachieA").GetComponent<Image>();
         TachieB = transform.Find("TachieB").GetComponent<Image>();
@@ -99,6 +102,14 @@ public partial class DialogFSM
         else
         {
             mSelf.ChangeState(DialogState.None);
+            if (mSelf.Context.CurrentPlot == "BeforeGame")
+            {
+                mSelf.StartCoroutine(mSelf.FadeBackgroundCoroutine(1));
+            }
+            else if (mSelf.Context.CurrentPlot == "AfterGame")
+            {
+                mSelf.StartCoroutine(mSelf.FadeBackgroundCoroutine(0));
+            }
         }
     }
 
@@ -192,6 +203,19 @@ public partial class DialogFSM
                 break;
         }
     }
+
+    IEnumerator FadeBackgroundCoroutine(float targetAlpha)
+    {
+        mBackground.blocksRaycasts = targetAlpha == 1;
+
+        while (Mathf.Approximately(mBackground.alpha, targetAlpha))
+        {
+            mBackground.alpha = Mathf.MoveTowards(mBackground.alpha, targetAlpha, 0.3f);
+            yield return null;
+        }
+        mBackground.alpha = targetAlpha;
+    }
+    
 
     public static void FadeLayer(float targetAlpha)
     {
