@@ -14,6 +14,7 @@ public partial class DialogFSM : MonoBehaviour
 
     public Dictionary<DialogState, IState> States;
     public Sprite[] TachieSprites;
+    public Sprite[] HeroineTachieDifferences;
     private readonly static Dictionary<string, int> mTachieSprites = new Dictionary<string, int>() {
         {"P", 0}, {"S", 1}, {"J", 2}, {"G", 3}, {"D", 4}
     };
@@ -94,7 +95,7 @@ public partial class DialogFSM
         {
             var line = mSelf.Context.CurrentLines[0];
             SetContent(line.Text);
-            SetIdentity(line.Type, line.Id);
+            SetIdentity(line.Type, line.Id, line.Kind);
 
             mSelf.ChangeState((DialogState) line.Type);
             mSelf.Context.CurrentLines.RemoveAt(0);
@@ -140,17 +141,25 @@ public partial class DialogFSM
         LastStateType = targetState;
     }
 
-    public static void SetIdentity(LineType target, string id)
+    public static void SetIdentity(LineType target, string id, string kind)
     {
         switch (target)
         {
             case LineType.CharacterA:
                 mSelf.NameLabelA.text = Localization.Get(id);
                 mSelf.TachieA.sprite = mSelf.TachieSprites[mTachieSprites[id]];
+                if (kind != null && id == "P")
+                {
+                    mSelf.TachieA.sprite = mSelf.HeroineTachieDifferences[Int32.Parse(kind)];
+                }
                 break;
             case LineType.CharacterB:
                 mSelf.NameLabelB.text = Localization.Get(id);
                 mSelf.TachieB.sprite = mSelf.TachieSprites[mTachieSprites[id]];
+                if (kind != null && id == "P")
+                {
+                    mSelf.TachieA.sprite = mSelf.HeroineTachieDifferences[Int32.Parse(kind)];
+                }
                 break;
             case LineType.Narration:
                 mSelf.TachieA.sprite = null;

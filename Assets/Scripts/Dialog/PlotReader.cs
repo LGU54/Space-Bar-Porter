@@ -16,6 +16,7 @@ public struct Line
     public LineType Type;
     public string Text;
     public string Id;
+    public string Kind;
 }
 
 public class PlotReader
@@ -69,7 +70,8 @@ public class PlotReader
                             {
                                 Type = (LineType) Enum.Parse(typeof(LineType), line.Name),
                                 Text = line.InnerText.Replace("&#10;", Environment.NewLine),
-                                Id = line.Attributes["id"]?.Value
+                                Id = line.Attributes["id"]?.Value,
+                                Kind = line.Attributes["kind"]?.Value
                             });
                         }
                     }
@@ -81,7 +83,8 @@ public class PlotReader
                             {
                                 Type = (LineType) Enum.Parse(typeof(LineType), line.Name),
                                 Text = line.InnerText.Replace("&#10;", Environment.NewLine),
-                                Id = line.Attributes["id"]?.Value
+                                Id = line.Attributes["id"]?.Value,
+                                Kind = line.Attributes["kind"]?.Value
                             });
                         }
                     }
@@ -93,7 +96,8 @@ public class PlotReader
                             {
                                 Type = (LineType) Enum.Parse(typeof(LineType), line.Name),
                                 Text = line.InnerText.Replace("&#10;", Environment.NewLine),
-                                Id = line.Attributes["id"]?.Value
+                                Id = line.Attributes["id"]?.Value,
+                                Kind = line.Attributes["kind"]?.Value
                             });
                         }
                     }

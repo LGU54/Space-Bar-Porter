@@ -44,6 +44,14 @@ public partial class ControlSceneManager
         Instance.StartCoroutine(Instance.LoadSceneCoroutine(targetScene, action));
     }
 
+    public static void ReloadSceneWithoutConfirm(Action action = null)
+    {
+        if (CurrentScene == "ControlScene") return;
+
+        CanTransition = true;
+        Instance.StartCoroutine(Instance.ReloadSceneCoroutine(action));
+    }
+
     public static void UnloadScene(string[] targetScene)
     {
         if (CurrentScene == "ControlScene") return;
@@ -95,6 +103,44 @@ public partial class ControlSceneManager
         yield return new WaitUntil(() => {return CanTransition;});
         CanTransition = false;
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(targetScene));
+
+        action?.Invoke();
+
+        yield return Fade(0);
+        mProgress.value = 0;
+    }
+
+    IEnumerator ReloadSceneCoroutine(Action action = null)
+    {
+        yield return Fade(1);
+        yield return new WaitForSeconds(1f);
+
+        var scene = SceneManager.GetActiveScene().name;
+        yield return SceneManager.UnloadSceneAsync(scene);
+
+        var operation = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+        operation.allowSceneActivation = false;
+
+        while (operation.progress <= 0.9f)
+        {
+            if (operation.progress == 0.9f && mProgress.value == 0.9f)
+            {
+                break;
+            }
+
+            mProgress.value = (mProgress.value + (operation.progress - mProgress.value) / 10) > 0.85f ? 0.9f : mProgress.value + (operation.progress - mProgress.value) / 10;
+            yield return null;
+        }
+
+        mProgress.value = 1;
+
+        operation.allowSceneActivation = true;
+        CurrentScene = scene;
+
+        yield return new WaitForSeconds(1f);
+        yield return new WaitUntil(() => {return CanTransition;});
+        CanTransition = false;
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene));
 
         action?.Invoke();
 
