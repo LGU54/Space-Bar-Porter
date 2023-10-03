@@ -5,11 +5,11 @@
   <InGame>
     <CharacterA id="P" kind="9"><![CDATA[ `(*>﹏<*)′ What's going on? ]]></CharacterA>
     <CharacterB id="S">Wake up kid. You've got deliveries to make.</CharacterB>
-    <CharacterA id="P">But it's just 8 :30 a.m., too ……early……for……getting……up……to……work</CharacterA>
-    <CharacterA id="P"><![CDATA[<size=45>ZZZ~ZZZZZZZZZZZ</size>]]></CharacterA>
+    <CharacterA id="P" kind="4">But it's just 8 :30 a.m., too ……early……for……getting……up……to……work</CharacterA>
+    <CharacterA id="P" kind="3"><![CDATA[<size=45>ZZZ~ZZZZZZZZZZZ</size>]]></CharacterA>
     <CharacterB id="S"><![CDATA[<size=50>Your KPI is the lowest in the whole company! </size>]]>&#10;It's all your fault to drag the company behind Solid Express, sleepy Bro!</CharacterB>
-    <CharacterA id="P">Neeeemooooo<![CDATA[ ╮(╯_╰)╭]]></CharacterA>
-    <CharacterA id="P">But what the hack is happening there? &#10;The road ahead seems to be intertwined with <![CDATA[<color=blue><i>Gravity Space</i></color> and <color=orange>Dash Space!</color> ]]>&#10;And wait, why there's a strange sign over me?</CharacterA>
+    <CharacterA id="P" kind="6">Neeeemooooo<![CDATA[ ╮(╯_╰)╭]]></CharacterA>
+    <CharacterA id="P" kind="6">But what the hack is happening there? &#10;The road ahead seems to be intertwined with <![CDATA[<color=blue><i>Gravity Space</i></color> and <color=orange>Dash Space!</color> ]]>&#10;And wait, why there's a strange sign over me?</CharacterA>
     <CharacterB id="S">I wonder that also. But it's me that can wonder, not you!</CharacterB>
     <CharacterB id="S"> <![CDATA[<size=50>Get your ass moving now!</size>]]></CharacterB>
     <CharacterB id="S">In <![CDATA[<color=red>red</color>, press <b>SPACE BAR</b> to jump.]]></CharacterB>

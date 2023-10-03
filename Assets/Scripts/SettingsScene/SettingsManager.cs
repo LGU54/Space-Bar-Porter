@@ -20,6 +20,9 @@ public partial class SettingsManager : MonoBehaviour
     private TMP_Text mBackgroundMusicVolumeValue;
     private TMP_Text mEffectVolumeValue;
 
+    private TMP_Dropdown mLanguageSelector;
+    private readonly string[] mLanguageOptions = { "en", "zh_Hans" };
+
     private void Awake()
     {
         mAudioButton = transform.Find("Menu/Audio").GetComponent<Toggle>();

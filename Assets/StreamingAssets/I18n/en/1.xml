@@ -3,20 +3,20 @@
     <Narration>Do remember that the gravity in Jump Space is especially low in gravity.</Narration>
   </BeforeGame>
   <InGame>
-    <CharacterA id="P"> Ughhhhhhh<![CDATA[(|||*д*)]]>&#10;It's still weekend. I am off duty today.</CharacterA>
+    <CharacterA id="P" kind="4"> Ughhhhhhh<![CDATA[(|||*д*)]]>&#10;It's still weekend. I am off duty today.</CharacterA>
     <CharacterB id="S">Get up Bro! <![CDATA[<color=red>The <size=50>president</size> is here</color>]]>.</CharacterB>
-    <CharacterA id="P">But it's just 8 :30 a.m., too ……early……for……getting……up……to……work</CharacterA>
+    <CharacterA id="P" kind="4">But it's just 8 :30 a.m., too ……early……for……getting……up……to……work</CharacterA>
     <CharacterB id="J">A new <![CDATA[<color=red>delivery</color> request from me, young lady.]]></CharacterB>
-    <CharacterA id="P">Of course, Mr. president! But emmmmmm. Where's the <![CDATA[<color=red>package</color>?]]></CharacterA>
+    <CharacterA id="P" kind="6">Of course, Mr. president! But emmmmmm. Where's the <![CDATA[<color=red>package</color>?]]></CharacterA>
     <CharacterB id="J">There're in all three packages. &#10;I have one for you, but you will need to claim the rest two yourself from the Gravity Space and Dash Space.</CharacterB>
-    <CharacterA id="P">Pardon? I suppose that <![CDATA[<color=#0000a0ff><i>Sam Express</i></color>  isn't an inter-space company.]]></CharacterA>
+    <CharacterA id="P" kind="6">Pardon? I suppose that <![CDATA[<color=#0000a0ff><i>Sam Express</i></color>  isn't an inter-space company.]]></CharacterA>
     <CharacterB id="S">Now it is</CharacterB>
     <CharacterB id="J">Listen, kid. See the sign above you?&#10;And all this distorted space? Limit Force does that.</CharacterB>
-    <CharacterA id="P"> Limit WHAT? <![CDATA[(´·д·｀)]]></CharacterA>
+    <CharacterA id="P" kind="6"> Limit WHAT? <![CDATA[(´·д·｀)]]></CharacterA>
     <CharacterB id="J">It's a very ancient power, existing even before the <![CDATA[<color=#a52a2aff><size=50>Moving-Verse</size></color>]]> that we live in.</CharacterB>
     <CharacterB id="J">We used to seal it with the <![CDATA[<color=purple><i>Space Hearts</i></color>. But now they are repatriated back to us somehow.]]></CharacterB>
     <CharacterB id="J">I need you to take the <![CDATA[<color=red>heart</color> of our space, combine it with the other space's heart and go to the <color=purple>sanctuary</color> to seal the <color=purple>Limit Core</color> again.]]></CharacterB>
-    <CharacterA id="P">But why me?<![CDATA[(。ŏ_ŏ)]]></CharacterA>
+    <CharacterA id="P" kind="5">But why me?<![CDATA[(。ŏ_ŏ)]]></CharacterA>
     <CharacterB id="S">Cause your boss is the legendary <![CDATA[<color=#0000a0ff><b>Sam Porter</b></color>! ]]></CharacterB>
     <CharacterB id="S">Bro, you can see that the area ahead has mixed up three sorts of areas in a row. &#10;Use your little brain to figure out a combo to glide through the barriers.&#10; I'm sure you get this. </CharacterB>
   </InGame>

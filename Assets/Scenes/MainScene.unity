@@ -281,15 +281,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 81420190d462f994a8b8d06db996230f, type: 3}
   - {fileID: 21300000, guid: 9270eb975972f4540a20ae2e264b53e2, type: 3}
   HeroineTachieDifferences:
-  - {fileID: -965998744, guid: ee31e87046ae5794ab9ce1e98d5ede3b, type: 3}
-  - {fileID: -2096337490, guid: ee31e87046ae5794ab9ce1e98d5ede3b, type: 3}
-  - {fileID: -378861098, guid: ee31e87046ae5794ab9ce1e98d5ede3b, type: 3}
-  - {fileID: -2076332024, guid: ee31e87046ae5794ab9ce1e98d5ede3b, type: 3}
-  - {fileID: -959068613, guid: ee31e87046ae5794ab9ce1e98d5ede3b, type: 3}
-  - {fileID: -1774288994, guid: ee31e87046ae5794ab9ce1e98d5ede3b, type: 3}
-  - {fileID: -1744904097, guid: ee31e87046ae5794ab9ce1e98d5ede3b, type: 3}
-  - {fileID: 2122015001, guid: ee31e87046ae5794ab9ce1e98d5ede3b, type: 3}
-  - {fileID: -1440324045, guid: ee31e87046ae5794ab9ce1e98d5ede3b, type: 3}
+  - {fileID: 21300000, guid: 001305f3fc2459e46b935611f9697ff5, type: 3}
+  - {fileID: 21300000, guid: 9c47a5abccb2b62438b39050a2971604, type: 3}
+  - {fileID: 21300000, guid: 3f593372201f8fe40b42449d94e4e8f2, type: 3}
+  - {fileID: 21300000, guid: 7c7850d18a416084e81a1dc05d1c9480, type: 3}
+  - {fileID: 21300000, guid: 44d02b6b171213d449a75f9cc0eb0bd7, type: 3}
+  - {fileID: 21300000, guid: feceef434d21bdb4ca0465360531a2c1, type: 3}
+  - {fileID: 21300000, guid: 7d7f6799b4f750f408bb8be5e8549eef, type: 3}
+  - {fileID: 21300000, guid: 0fe12850d17dd3142832b70b7da956c7, type: 3}
+  - {fileID: 21300000, guid: 1050defd0d6be514bb275ff01f7ae131, type: 3}
   Button: {fileID: 0}
   TachieA: {fileID: 0}
   TachieB: {fileID: 0}

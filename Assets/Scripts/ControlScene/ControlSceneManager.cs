@@ -13,6 +13,7 @@ public partial class ControlSceneManager : MonoBehaviour
     private Slider mProgress;
 
     public static bool CanTransition;
+    public static bool IsTransiting;
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public partial class ControlSceneManager : MonoBehaviour
         mProgress = GetComponentInChildren<Slider>();
 
         LoadSceneWithoutConfirm("StartScene");
+        
     }
 }
 
@@ -44,12 +46,12 @@ public partial class ControlSceneManager
         Instance.StartCoroutine(Instance.LoadSceneCoroutine(targetScene, action));
     }
 
-    public static void ReloadSceneWithoutConfirm(Action action = null)
+    public static void ReloadSceneWithoutConfirm(string targetScene, Action action = null)
     {
         if (CurrentScene == "ControlScene") return;
 
         CanTransition = true;
-        Instance.StartCoroutine(Instance.ReloadSceneCoroutine(action));
+        Instance.StartCoroutine(Instance.ReloadSceneCoroutine(targetScene, action));
     }
 
     public static void UnloadScene(string[] targetScene)
@@ -80,6 +82,8 @@ public partial class ControlSceneManager
         yield return Fade(1);
         yield return new WaitForSeconds(1f);
 
+        IsTransiting = true;
+
         var operation = SceneManager.LoadSceneAsync(targetScene, LoadSceneMode.Additive);
         operation.allowSceneActivation = false;
 
@@ -108,17 +112,20 @@ public partial class ControlSceneManager
 
         yield return Fade(0);
         mProgress.value = 0;
+
+        IsTransiting = false;
     }
 
-    IEnumerator ReloadSceneCoroutine(Action action = null)
+    IEnumerator ReloadSceneCoroutine(string targetScene, Action action = null)
     {
         yield return Fade(1);
         yield return new WaitForSeconds(1f);
 
-        var scene = SceneManager.GetActiveScene().name;
-        yield return SceneManager.UnloadSceneAsync(scene);
+        IsTransiting = true;
 
-        var operation = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+        yield return SceneManager.UnloadSceneAsync(targetScene);
+
+        var operation = SceneManager.LoadSceneAsync(targetScene, LoadSceneMode.Additive);
         operation.allowSceneActivation = false;
 
         while (operation.progress <= 0.9f)
@@ -135,23 +142,27 @@ public partial class ControlSceneManager
         mProgress.value = 1;
 
         operation.allowSceneActivation = true;
-        CurrentScene = scene;
+        CurrentScene = targetScene;
 
         yield return new WaitForSeconds(1f);
         yield return new WaitUntil(() => {return CanTransition;});
         CanTransition = false;
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(targetScene));
 
         action?.Invoke();
 
         yield return Fade(0);
         mProgress.value = 0;
+
+        IsTransiting = false;
     }
 
     IEnumerator UnloadSceneCoroutine(string[] targetScene)
     {
         yield return Fade(1);
         yield return new WaitForSeconds(1f);
+
+        IsTransiting = true;
 
         foreach (var scene in targetScene)
         {
@@ -163,12 +174,16 @@ public partial class ControlSceneManager
         yield return new WaitForSeconds(1f);
         yield return Fade(0);
         mProgress.value = 0;
+
+        IsTransiting = false;
     }
 
     IEnumerator SwitchSceneCoroutine(string targetScene, Action action = null)
     {
         yield return Fade(1);
         yield return new WaitForSeconds(1f);
+
+        IsTransiting = true;
 
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
 
@@ -200,6 +215,8 @@ public partial class ControlSceneManager
 
         yield return Fade(0);
         mProgress.value = 0;
+
+        IsTransiting = false;
     }
 
     IEnumerator Fade(float targetAlpha)

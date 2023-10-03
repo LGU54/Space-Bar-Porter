@@ -12,6 +12,8 @@ public partial class DialogFSM : MonoBehaviour
     public DialogState CurrentStateType;
     public DialogState LastStateType;
 
+    public static bool IsDisplaying;
+
     public Dictionary<DialogState, IState> States;
     public Sprite[] TachieSprites;
     public Sprite[] HeroineTachieDifferences;
@@ -72,17 +74,17 @@ public partial class DialogFSM : MonoBehaviour
             NextLine();
         }
 
-        if (Input.GetKeyDown(KeyCode.A) && Context.CurrentLines.Count == 0)
-        {
-            Context.ReadGameLines();
-            NextLine();
-        }
+        //if (Input.GetKeyDown(KeyCode.A) && Context.CurrentLines.Count == 0)
+        //{
+        //    Context.ReadGameLines();
+        //    NextLine();
+        //}
 
-        if (Input.GetKeyDown(KeyCode.B) && Context.CurrentLines.Count == 0)
-        {
-            Context.ReadAfterLines();
-            NextLine();
-        }
+        //if (Input.GetKeyDown(KeyCode.B) && Context.CurrentLines.Count == 0)
+        //{
+        //    Context.ReadAfterLines();
+        //    NextLine();
+        //}
     }
     
 }
@@ -105,11 +107,13 @@ public partial class DialogFSM
             mSelf.ChangeState(DialogState.None);
             if (mSelf.Context.CurrentPlot == "BeforeGame")
             {
-                mSelf.StartCoroutine(mSelf.FadeBackgroundCoroutine(1));
+                mSelf.StartCoroutine(mSelf.FadeBackgroundCoroutine(0));
+                mSelf.Context.ReadGameLines();
+                NextLine();
             }
             else if (mSelf.Context.CurrentPlot == "AfterGame")
             {
-                mSelf.StartCoroutine(mSelf.FadeBackgroundCoroutine(0));
+                mSelf.StartCoroutine(mSelf.FadeBackgroundCoroutine(1));
             }
         }
     }
@@ -150,7 +154,7 @@ public partial class DialogFSM
                 mSelf.TachieA.sprite = mSelf.TachieSprites[mTachieSprites[id]];
                 if (kind != null && id == "P")
                 {
-                    mSelf.TachieA.sprite = mSelf.HeroineTachieDifferences[Int32.Parse(kind)];
+                    mSelf.TachieA.sprite = mSelf.HeroineTachieDifferences[Int32.Parse(kind) - 1];
                 }
                 break;
             case LineType.CharacterB:
@@ -158,7 +162,7 @@ public partial class DialogFSM
                 mSelf.TachieB.sprite = mSelf.TachieSprites[mTachieSprites[id]];
                 if (kind != null && id == "P")
                 {
-                    mSelf.TachieA.sprite = mSelf.HeroineTachieDifferences[Int32.Parse(kind)];
+                    mSelf.TachieA.sprite = mSelf.HeroineTachieDifferences[Int32.Parse(kind) - 1];
                 }
                 break;
             case LineType.Narration:
@@ -217,10 +221,10 @@ public partial class DialogFSM
     {
         mBackground.blocksRaycasts = targetAlpha == 1;
 
-        while (Mathf.Approximately(mBackground.alpha, targetAlpha))
+        while (!Mathf.Approximately(mBackground.alpha, targetAlpha))
         {
             mBackground.alpha = Mathf.MoveTowards(mBackground.alpha, targetAlpha, 0.3f);
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
         mBackground.alpha = targetAlpha;
     }
@@ -234,11 +238,12 @@ public partial class DialogFSM
     IEnumerator FadeLayerCoroutine(float targetAlpha)
     {
         mCanvasGroup.blocksRaycasts = targetAlpha == 1;
+        IsDisplaying = targetAlpha == 1;
 
         while (!Mathf.Approximately(mCanvasGroup.alpha, targetAlpha))
         {
             mCanvasGroup.alpha = Mathf.MoveTowards(mCanvasGroup.alpha, targetAlpha, 0.3f);
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
         mCanvasGroup.alpha = targetAlpha;
     }

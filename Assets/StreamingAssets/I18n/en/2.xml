@@ -4,9 +4,9 @@
   </BeforeGame>
   <InGame>
     <CharacterB id="G">Young lady, I know that <![CDATA[<b><color=red>president Jumbo</color></b>]]> has asked you to take the <![CDATA[<color=blue>Gravity Heart</color>.]]></CharacterB>
-    <CharacterA id="P">Affirmative, your majesty. So could you please<![CDATA[(┐ ◟;*д*)ノ]]></CharacterA>
+    <CharacterA id="P" kind="2">Affirmative, your majesty. So could you please<![CDATA[(┐ ◟;*д*)ノ]]></CharacterA>
     <CharacterB id="G"><![CDATA[<b>Negative</b>]]>. I don't believe in that guy or you.&#10;Only those who are brave enough to invert the gravity and conquer the Gravity Trail can be the keeper of Gravity Heart.</CharacterB>
-    <CharacterA id="P"> <![CDATA[(Gravity Trail? I think that's the road ahead.)]]></CharacterA>
+    <CharacterA id="P" kind="8"> <![CDATA[(Gravity Trail? I think that's the road ahead.)]]></CharacterA>
   </InGame>
   <AfterGame>
 	<CharacterB id="G">You have earned my respect, brave lady. Maybe the ones from <![CDATA[<color=red>Jump</color>]]> aren't all that coward.</CharacterB>

@@ -3,17 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Kuchinashi;
-
-namespace Kuchinashi
-{
-    public enum AreaType
-    {
-        JumpArea,
-        GravityReverseArea,
-        DashArea,
-    }
-}
 
 public partial class InGameUIController : MonoBehaviour
 {
@@ -51,6 +40,9 @@ public partial class InGameUIController : MonoBehaviour
         });
 
         mRestart = transform.Find("MenuPanel/Restart").GetComponent<Button>();
+        mRestart.onClick.AddListener(() => {
+            ControlSceneManager.ReloadSceneWithoutConfirm(ControlSceneManager.CurrentScene);
+        });
 
         mResume = transform.Find("MenuPanel/Resume").GetComponent<Button>();
         mResume.onClick.AddListener(() => StartCoroutine(FadeMenuPanelCoroutine(0)));
@@ -71,10 +63,10 @@ public partial class InGameUIController
             case AreaType.JumpArea:
                 Instance.mSkill.image.sprite = Instance.SkillSprites[0];
                 break;
-            case AreaType.GravityReverseArea:
+            case AreaType.ReverseGravityArea:
                 Instance.mSkill.image.sprite = Instance.SkillSprites[1];
                 break;
-            case AreaType.DashArea:
+            case AreaType.FlashArea:
                 Instance.mSkill.image.sprite = Instance.SkillSprites[2];
                 break;
         }
