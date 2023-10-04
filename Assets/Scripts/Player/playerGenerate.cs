@@ -56,6 +56,8 @@ public class playerGenerate : MonoBehaviour
             if(rb.gravityScale < 0)
             {
                 rb.gravityScale *= -1;
+                Player.GetComponent<SpriteRenderer>().flipY = !Player.GetComponent<SpriteRenderer>().flipY;
+                Player.transform.GetChild(0).GetComponent<SpriteRenderer>().flipY = !Player.transform.GetChild(0).GetComponent<SpriteRenderer>().flipY;
             }
             initComplete = true;
             return initComplete;

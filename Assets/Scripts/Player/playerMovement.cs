@@ -32,11 +32,13 @@ public class PlayerMovement : MonoBehaviour
         {
             Data.SearchListAndReplace("isFacingRight", 0);
             SpriteRenderer.flipX = false;
+            transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = false;
         }
         if(moveinput.x < 0)
         {
             Data.SearchListAndReplace("isFacingRight", 1);
             SpriteRenderer.flipX = true;
+            transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = true;
         }
         if(moveinput.x == 0)
         { animator.SetBool("isWalking", false); }
@@ -45,14 +47,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if(player.velocity.y < 0) { animator.SetTrigger("Falling"); }
-        if (player.gravityScale < 0)
-        {
-            SpriteRenderer.flipY = true;
-        }
-        else
-        {
-            SpriteRenderer.flipY = false;
-        }
         spaceController.CheckFall();
         spaceController.checkStat(Data.SearchListAndOutput("check"));
         player.AddForce(moveinput * moveSpeed * Time.deltaTime * 200);

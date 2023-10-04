@@ -11,11 +11,13 @@ public class playerSpaceController: MonoBehaviour
     Flash flashAction;
     static int spaceCount;
     Animator animator;
+    SpriteRenderer spriteRenderer;
     bool StartJump;
     private void Awake()
     {
         flashAction = GetComponent<Flash>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
     public void SetSpaceCount(int count)
     {
@@ -87,7 +89,7 @@ public class playerSpaceController: MonoBehaviour
             reverseGravity = false;
             flash = true;
             //Debug.Log("F");
-        }else if (input == -1)
+        }else
         {
             jump = false;
             reverseGravity = false;
@@ -126,6 +128,7 @@ public class playerSpaceController: MonoBehaviour
             else { player.AddForce(yVelocity * jumpForce); }
             animator.SetTrigger("startJump");
             StartJump = true;
+            AudioManager.Instance.PlaySFX("Jump");
             // JumpSFX.Post(gameObject);
             //Debug.Log("jump");
             spaceCount -= 1;
@@ -134,22 +137,23 @@ public class playerSpaceController: MonoBehaviour
             //Debug.Log("Reverse");
             player.gravityScale *= -1;
             spaceCount -= 1;
-            transform.Rotate(new Vector3(0, 0, 1), 180);
-            transform.Rotate(new Vector3(0, 1, 0), 180);
-            // if (player.gravityScale  < 0)
-            // {
-            //     GravityUpSFX.Post(gameObject);
-            // }
-            // else if (player.gravityScale > 0)
-            // {
-            //     GravityDownSFX.Post(gameObject);
-            // }
+            spriteRenderer.flipY = !spriteRenderer.flipY;
+            transform.GetChild(0).GetComponent<SpriteRenderer>().flipY = !transform.GetChild(0).GetComponent<SpriteRenderer>().flipY;
+            if (player.gravityScale  < 0)
+             {
+                AudioManager.Instance.PlaySFX("ReverseGravity");
+            }
+             else if (player.gravityScale > 0)
+             {
+                AudioManager.Instance.PlaySFX("ReverseGravityDown");
+            }
         }
         else if (reverseGravity == false && flash == true && jump == false)
         {
             //Debug.Log("flash");
             if (flashAction.flash(player)) 
             { spaceCount -= 1;}
+            AudioManager.Instance.PlaySFX("Dash");
             // DashSFX.Post(gameObject);
         }
         else

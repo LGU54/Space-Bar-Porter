@@ -37,6 +37,10 @@ public partial class DialogFSM : MonoBehaviour
 
     public static DialogFSM GetInstance()
     {
+        // if (mSelf == null)
+        // {
+        //     return new();
+        // }
         return mSelf;
     }
 
@@ -73,20 +77,12 @@ public partial class DialogFSM : MonoBehaviour
         {
             NextLine();
         }
-
-        //if (Input.GetKeyDown(KeyCode.A) && Context.CurrentLines.Count == 0)
-        //{
-        //    Context.ReadGameLines();
-        //    NextLine();
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.B) && Context.CurrentLines.Count == 0)
-        //{
-        //    Context.ReadAfterLines();
-        //    NextLine();
-        //}
     }
     
+    public static void SetContext(int index)
+    {
+        mSelf.Context = new PlotReader(index);
+    }
 }
 
 public partial class DialogFSM

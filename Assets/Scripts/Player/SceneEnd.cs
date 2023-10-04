@@ -21,6 +21,6 @@ public static class SceneEnd
             DialogFSM.GetInstance().Context.ReadBeforeLines();
             DialogFSM.NextLine();
         });
-        UserPreference.Save(Data.SearchList(index + 1), index+1);
+        UserPreference.Save("save", Data.SearchList(index + 1));
     }
 }

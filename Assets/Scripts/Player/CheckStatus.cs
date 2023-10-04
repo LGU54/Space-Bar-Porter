@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CheckStatus : MonoBehaviour
 {
@@ -82,6 +83,10 @@ public class CheckStatus : MonoBehaviour
 
     IEnumerator OnEnd()
     {
+        //Debug.Log(DialogFSM.GetInstance());
+        //Debug.Log(DialogFSM.GetInstance().Context);
+        string SceneName = SceneManager.GetActiveScene().name;
+        DialogFSM.GetInstance().Context = new PlotReader(Data.GetIndexOfList(SceneName));
         DialogFSM.GetInstance().Context.ReadAfterLines();
         DialogFSM.NextLine();
 

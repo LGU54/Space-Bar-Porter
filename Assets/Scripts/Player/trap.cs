@@ -26,6 +26,6 @@ public class trap : MonoBehaviour
     {
         //animator.SetTrigger("Die");
         pg.GetPlayer().GetComponent<Rigidbody2D>().simulated = false;
-        Invoke(nameof(localRG), 0.5F);
+        localRG();
     }
 }

@@ -38,7 +38,7 @@ public partial class StartSceneUIController : MonoBehaviour
         });
 
         mStart.onClick.AddListener(() => {
-            // ClickSFX.Post(gameObject);
+            AudioManager.Instance.PlaySFX("Click");
             ControlSceneManager.SwitchSceneWithoutConfirm("no0", () =>
             {
                 DialogFSM.GetInstance().Context = new PlotReader(0);
@@ -48,7 +48,7 @@ public partial class StartSceneUIController : MonoBehaviour
         });
 
         mContinue.onClick.AddListener(() => {
-            // ClickSFX.Post(gameObject);
+            AudioManager.Instance.PlaySFX("Click");
             if (UserPreference.Read<string>("save") == null)
             {
                 mMessage.Show(Localization.Get("NoSave"), () => {
@@ -61,7 +61,8 @@ public partial class StartSceneUIController : MonoBehaviour
             {
                 ControlSceneManager.SwitchSceneWithoutConfirm(UserPreference.Read<string>("save"), () =>
                 {
-                    DialogFSM.GetInstance().Context = new PlotReader(Int32.Parse(UserPreference.Read<string>("Save")[..^1]));
+                    // Debug.Log(DialogFSM.GetInstance().Context);
+                    DialogFSM.SetContext(Int32.Parse(UserPreference.Read<string>("save").Replace("no", "")));
                     DialogFSM.GetInstance().Context.ReadBeforeLines();
                     DialogFSM.NextLine();
                 });
@@ -69,16 +70,21 @@ public partial class StartSceneUIController : MonoBehaviour
         });
 
         mSettings.onClick.AddListener(() => {
-            // ClickSFX.Post(gameObject);
+            AudioManager.Instance.PlaySFX("Click");
             mMessage.Show(Localization.Get("OnSettingsClick"), () => {
                 ControlSceneManager.SwitchSceneWithoutConfirm("SettingsScene");
             });
         });
 
         mQuit.onClick.AddListener(() => {
-            // ClickSFX.Post(gameObject);
+            AudioManager.Instance.PlaySFX("Click");
             mMessage.Show(Localization.Get("OnApplicationQuit"), () => Application.Quit());
         });
+
+        AudioManager.ChangeBgVolume(0.1f);
+        UserPreference.Save("BackgroundMusicVolume", 10);
+        AudioManager.ChangeSFXVolume(0.8f);
+        UserPreference.Save("EffectVolume", 80);
     }
 }
 

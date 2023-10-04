@@ -75,7 +75,7 @@ public partial class SettingsManager : MonoBehaviour
         mSystemSettings.alpha = 0;
         mSystemSettings.blocksRaycasts = false;
 
-        mBackgroundMusicVolume.SetValueWithoutNotify(UserPreference.Contains("BackgroundMusicVolume") ? UserPreference.Read<int>("BackgroundMusicVolume") : 80);
+        mBackgroundMusicVolume.SetValueWithoutNotify(UserPreference.Contains("BackgroundMusicVolume") ? UserPreference.Read<int>("BackgroundMusicVolume") : 10);
         mEffectVolume.SetValueWithoutNotify(UserPreference.Contains("EffectVolume") ? UserPreference.Read<int>("EffectVolume") : 80);
         mBackgroundMusicVolumeValue.text = mBackgroundMusicVolume.value.ToString();
         mEffectVolumeValue.text = mEffectVolume.value.ToString();
@@ -84,11 +84,15 @@ public partial class SettingsManager : MonoBehaviour
             UserPreference.Save("BackgroundMusicVolume", (int) value);
             mBackgroundMusicVolume.SetValueWithoutNotify(value);
             mBackgroundMusicVolumeValue.text = value.ToString();
+
+            AudioManager.ChangeBgVolume(value / 100f);
         });
         mEffectVolume.onValueChanged.AddListener(value => {
             UserPreference.Save("EffectVolume", (int) value);
             mEffectVolume.SetValueWithoutNotify(value);
             mEffectVolumeValue.text = value.ToString();
+
+            AudioManager.ChangeSFXVolume(value / 100f);
         });
     }
 }

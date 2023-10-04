@@ -1,11 +1,11 @@
 <Localization lang="en">
   <BeforeGame>
-    <Narration>Our cutest protagonist, the top one otaku☆porter, Bro woke up one day discovered that the world she's familiar with changed quite a lot. &#10;She got out and discovered that there is a mysterious sign over his head written<![CDATA[<b>“Space Bar * X”</b>]]>. &#10;Her boss come in and show her what's going on.</Narration>
+    <Narration>Our cutest protagonist, the top one otaku☆porter, Bro woke up one day discovered that the world she's familiar with changed quite a lot. &#10;She got out and discovered that there is a mysterious sign over her head written<![CDATA[<b>“Space Bar * X”</b>]]>. &#10;Her boss come in and show her what's going on.</Narration>
   </BeforeGame>
   <InGame>
     <CharacterA id="P" kind="9"><![CDATA[ `(*>﹏<*)′ What's going on? ]]></CharacterA>
     <CharacterB id="S">Wake up kid. You've got deliveries to make.</CharacterB>
-    <CharacterA id="P" kind="4">But it's just 8 :30 a.m., too ……early……for……getting……up……to……work</CharacterA>
+    <CharacterA id="P" kind="4">But it's just 8 :30 a.m., too ……early……for……getting……up……to……work.</CharacterA>
     <CharacterA id="P" kind="3"><![CDATA[<size=45>ZZZ~ZZZZZZZZZZZ</size>]]></CharacterA>
     <CharacterB id="S"><![CDATA[<size=50>Your KPI is the lowest in the whole company! </size>]]>&#10;It's all your fault to drag the company behind Solid Express, sleepy Bro!</CharacterB>
     <CharacterA id="P" kind="6">Neeeemooooo<![CDATA[ ╮(╯_╰)╭]]></CharacterA>

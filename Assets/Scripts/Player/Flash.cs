@@ -42,21 +42,22 @@ public class Flash : MonoBehaviour
             targetPoint = new Vector2(positionPresent.x - dist/2, positionPresent.y);
         }
 
-        wallCheck = Physics2D.OverlapBox(targetPoint - new Vector2(0, 0.3F), new Vector2(0.8F, 0.8F), 0, LayerMask.GetMask("ground"));
-        //DrawDebugBox(targetPoint - new Vector2(0, 0.3F), 0.8f, 0.8f, Color.yellow);
+        wallCheck = Physics2D.OverlapBox(targetPoint , new Vector2(0.8F, 0.8F), 0, LayerMask.GetMask("ground"));
+        //DrawDebugBox(targetPoint , 0.8f, 0.8f, Color.yellow);
         if (player.gravityScale < 0)
         {
-            groundCheck = Physics2D.OverlapBox(new Vector2(targetPoint.x, targetPoint.y + 0.3F), new Vector2(0.45F, 0.45F), 0, LayerMask.GetMask("ground"));
-            //DrawDebugBox(new Vector2(targetPoint.x, targetPoint.y + 0.3F), 0.45f, 0.45f, Color.red);
+            groundCheck = Physics2D.OverlapBox(new Vector2(targetPoint.x, targetPoint.y + 0.5F), new Vector2(0.45F, 0.45F), 0, LayerMask.GetMask("ground"));
+            //DrawDebugBox(new Vector2(targetPoint.x, targetPoint.y + 0.5F), 0.45f, 0.45f, Color.red);
         }
         else
         {
-            groundCheck = Physics2D.OverlapBox(new Vector2(targetPoint.x, targetPoint.y - 1), new Vector2(0.45F, 0.45F), 0, LayerMask.GetMask("ground"));
-            //DrawDebugBox(new Vector2(targetPoint.x, targetPoint.y - 1), 0.5f, 0.5f, Color.red);
+            groundCheck = Physics2D.OverlapBox(new Vector2(targetPoint.x, targetPoint.y - 0.5F), new Vector2(0.45F, 0.45F), 0, LayerMask.GetMask("ground"));
+            //DrawDebugBox(new Vector2(targetPoint.x, targetPoint.y - 0.5F), 0.5f, 0.5f, Color.red);
         }
-        // Debug.Log("GroundCheck: " + groundCheck);
-        // Debug.Log("WallCheck:   " + wallCheck);
-        // Debug.Log("GetFlash():  " + controller.GetFlash());
+        //Debug.Log("GroundCheck: " + groundCheck);
+        //Debug.Log("WallCheck:   " + wallCheck);
+        //Debug.Log("GetFlash():  " + controller.GetFlash());
+        //Debug.Log(Data.SearchListAndOutput("check"));
         //Debug.Log(controller);
         //Debug.Log(controller.GetFlash());
         //Debug.Log(targetPoint);

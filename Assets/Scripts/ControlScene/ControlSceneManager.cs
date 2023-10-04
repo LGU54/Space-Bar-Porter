@@ -24,7 +24,6 @@ public partial class ControlSceneManager : MonoBehaviour
         mProgress = GetComponentInChildren<Slider>();
 
         LoadSceneWithoutConfirm("StartScene");
-        
     }
 }
 
